@@ -8,7 +8,7 @@ export function AnalisarFrotas() {
   const [frotasDuplicadas, setFrotasDuplicadas] = useState([]);
   useEffect(() => {
     async function getFrotas() {
-      const req = await fetch("http://localhost:3000/api/frotas");
+      const req = await fetch("/api/frotas");
       const frotasAPI = await req.json();
 
       setFrotas(frotasAPI);

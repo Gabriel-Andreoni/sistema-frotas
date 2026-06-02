@@ -15,7 +15,7 @@ export default function CadastrarFrotas() {
 
     setIsLoading(true);
 
-    const req = await fetch("http://localhost:3000/api/frotas", {
+    const req = await fetch("/api/frotas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(frotasFormatadas),
