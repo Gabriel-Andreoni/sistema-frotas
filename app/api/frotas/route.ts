@@ -10,7 +10,12 @@ export async function GET() {
 export async function POST(req: NextRequest) {
     const body = await req.json();
 
-    frotas.push(...body);
+    if(frotas.length == 1) {
+        frotas.shift();
+        frotas.push(body);
+    } else {
+        frotas.push(body);
+    }
 
     return NextResponse.json({ message: "Frotas cadastradas" });
 }
