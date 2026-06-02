@@ -6,12 +6,13 @@ export function AnalisarFrotas() {
   const [frotas, setFrotas] = useState([]);
   const [frotasParaProcurar, setFrotasParaProcurar] = useState("");
   const [frotasDuplicadas, setFrotasDuplicadas] = useState([]);
+
   useEffect(() => {
     async function getFrotas() {
       const req = await fetch("/api/frotas");
       const frotasAPI = await req.json();
 
-      setFrotas(frotasAPI);
+      setFrotas(frotasAPI[0]);
     }
 
     getFrotas();
@@ -29,9 +30,7 @@ export function AnalisarFrotas() {
   return (
     <div className="w-9/12 h-full p-4 flex gap-4 items-start">
       <ul className="w-4/12 h-full p-4 flex flex-col gap-2 border bg-white/10 rounded-lg overflow-y-scroll scrollbar-none">
-        {frotas === undefined ? (
-          <span>Não tem frotas</span>
-        ) : (
+        {frotas != undefined ? (
           frotas.map((f, index) => {
             return (
               <li className="w-full" key={index}>
@@ -39,6 +38,8 @@ export function AnalisarFrotas() {
               </li>
             );
           })
+        ) : (
+          <span>Nenhuma frota cadastrada</span>
         )}
       </ul>
       <textarea
@@ -48,7 +49,7 @@ export function AnalisarFrotas() {
       ></textarea>
       <ul className="w-4/12 h-full p-4 bg-white/10 border rounded-lg overflow-y-scroll scrollbar-none">
         {frotasDuplicadas.length === 0 ? (
-          <span>Não existem frotas duplicadas</span>
+          null
         ) : (
           frotasDuplicadas.map((f, i) => {
             return <li key={i}>{f}</li>;
