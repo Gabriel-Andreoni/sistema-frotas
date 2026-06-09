@@ -23,7 +23,7 @@ export default function CadastrarFrotas() {
 
     if (req.status === 200) {
       setSucess(true);
-      toast("Frota cadastrada com sucesso.");
+      toast("Frota cadastrada com sucesso.", {toasterId: "frotasCadastradas"});
       setFrotasRaw("");
       setIsLoading(false);
     } else {
@@ -34,7 +34,7 @@ export default function CadastrarFrotas() {
 
   return (
     <div className="w-full h-screen flex overflow-hidden">
-      {sucess && <Toaster />}
+      {sucess && <Toaster toasterId="frotasCadastradas" />}
       <Menu />
 
       <div className="w-8/12 p-4">
@@ -48,14 +48,14 @@ export default function CadastrarFrotas() {
       </div>
       <div className="p-4 flex flex-col gap-2">
         <button
-          className="p-2 bg-green-500 rounded-lg cursor-pointer"
+          className="p-2 bg-green-500 text-black rounded-lg cursor-pointer"
           onClick={cadastrarFrotas}
           disabled={isLoading}
         >
           Cadastrar Frota
         </button>
         <button
-          className="p-2 bg-red-500 rounded-lg cursor-pointer"
+          className="p-2 bg-red-500 text-black rounded-lg cursor-pointer"
           onClick={() => setFrotasRaw("")}
           disabled={isLoading}
         >

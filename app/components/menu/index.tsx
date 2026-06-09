@@ -13,10 +13,10 @@ export function Menu() {
     >
       <ul className="w-full h-full p-4 flex flex-col justify-center items-start gap-2">
         <li className="text-xl cursor-pointer">
-          <Link href="/">Home</Link>
+          <Link className="text-black" href="/">Home</Link>
         </li>
         <li className="text-xl cursor-pointer">
-          <Link href="/cadastrarFrotas">Cadastrar Frota</Link>
+          <Link className="text-black" href="/cadastrarFrotas">Cadastrar Frota</Link>
         </li>
       </ul>
     </nav>
